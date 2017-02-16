@@ -2,7 +2,7 @@
 *.dat
 
 # Virtual envs
-.deepnap-env/
+venv/
 
 # Pycharm files
 .idea/

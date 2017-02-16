@@ -1,8 +1,11 @@
+import sys
+sys.path.append('../../')
+
 from collections import deque
-from qlearning.qtable import QAgent
-from qlearning.simple_envs import SimpleMaze
-from qlearning.qnn import QAgentNN
-from qlearning.mixin import AnealMixin
+from rl.qtable import QAgent
+from rl.simple_envs import SimpleMaze
+from rl.qnn_theano import QAgentNN
+from rl.mixin import AnealMixin
 
 
 class QAgentAneal(AnealMixin, QAgent):

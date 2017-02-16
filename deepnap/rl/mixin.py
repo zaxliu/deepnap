@@ -44,7 +44,7 @@ class PhiMixin(object):
     def reset(self, **kwargs):
         self.phi_buffer = deque()
         self.__last_state = None
-        super(PhiMixin, self).reset(**kwarg)
+        super(PhiMixin, self).reset(**kwargs)
 
         return
 

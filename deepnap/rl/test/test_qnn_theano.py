@@ -48,9 +48,9 @@ while True:
         episode_steps += 1
         episode_loss += loss if loss else 0
     # print '):',
-    print len(path),
-    print "{:.3f}".format(episode_loss),
-    print ""
+    # print len(path),
+    # print "{:.3f}".format(episode_loss),
+    # print ""
     cum_steps += episode_steps
     cum_reward += episode_reward
     num_episodes += 1
