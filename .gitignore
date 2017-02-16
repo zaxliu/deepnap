@@ -1,6 +1,9 @@
 # no raw data file (.dat)
 *.dat
 
+# Virtual envs
+.deepnap-env/
+
 # Pycharm files
 .idea/
 
