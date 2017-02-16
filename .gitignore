@@ -1,0 +1,25 @@
+# no raw data file (.dat)
+*.dat
+
+# Pycharm files
+.idea/
+
+# ipython notebook checkpoints
+.ipynb_checkpoints/
+.save
+
+# compiled python (.pyc)
+*.pyc
+
+# log file
+*.log
+*.csv
+*.txt
+*.stat
+*.tar.gz
+
+# MISC
+.fuse*
+
+# temp files
+.tmp
