@@ -21,18 +21,14 @@ from rl.mixin import PhiMixin, DynaMixin
 
 
 sys_stdout = sys.stdout
-log_prefix = '_'.join(['msg'] + os.path.basename(__file__).replace('.', '_').split('_')[1:4])
-log_file_name = "{}_{}.log".format(log_prefix, sys.argv[1])
+log_file_name = "Default"
 
 # Composite classes
-class Dyna_QAgentNN(DynaMixin, QAgentNN):
+class Phi_QAgentNN(PhiMixin, QAgentNN):
     def __init__(self, **kwargs):
-        super(Dyna_QAgentNN, self).__init__(**kwargs)
-
+        super(Phi_QAgentNN, self).__init__(**kwargs)
 
 # Parameters
-# |- Data
-location = 'dmW'
 # |- Agent
 #    |- QAgent
 actions = [(True, None), (False, 'serve_all')]
@@ -40,38 +36,23 @@ gamma, alpha = 0.9, 0.9  # TD backup
 explore_strategy, epsilon = 'epsilon', 0.02  # exploration
 #    |- QAgentNN
 #        | - Phi
-# phi_length = 5
-# dim_state = (1, phi_length, 3+2)
-# range_state_slice = [(0, 10), (0, 10), (0, 10), (0, 1), (0, 1)]
-# range_state = [[range_state_slice]*phi_length]
-#        | - No Phi
-phi_length = 0
-dim_state = (1, 1, 3)
-range_state = ((((0, 10), (0, 10), (0, 10)),),)
+phi_length = 5
+dim_state = (1, phi_length, 3+2)
+range_state_slice = [(0, 10), (0, 10), (0, 10), (0, 1), (0, 1)]
+range_state = [[range_state_slice]*phi_length]
 #        | - Other params
 momentum, learning_rate = 0.9, 0.01  # SGD
 num_buffer, memory_size, batch_size, update_period, freeze_period  = 2, 200, 100, 4, 16
 reward_scaling, reward_scaling_update, rs_period = 1, 'adaptive', 32  # reward scaling
 #    |- Env model
-model_type, traffic_window_size = 'IPP', 50
-stride, n_iter, adjust_offset = 2, 3, 1e-22
-eval_period, eval_len = 4, 100
-n_belief_bins, max_queue_len = 0, 20
 Rs, Rw, Rf, Co, Cw = 1.0, -1.0, -10.0, -5.0, -0.5
-traffic_params = (model_type, traffic_window_size,
-                  stride, n_iter, adjust_offset,
-                  eval_period, eval_len,
-                  n_belief_bins)
-queue_params = (max_queue_len,)
 beta = 0.5  # R = (1-beta)*ServiceReward + beta*Cost
 reward_params = (Rs, Rw, Rf, Co, Cw, beta)
-#    |- DynaQ
-num_sim = 10
 
 # |- Env
 #    |- Time
 start_time = pd.to_datetime("2014-10-15 09:40:00")
-total_time = pd.Timedelta(days=7)
+total_time = pd.Timedelta(hours=1)
 time_step = pd.Timedelta(seconds=2)
 backoff_epochs = num_buffer*memory_size+phi_length
 head_datetime =  start_time - time_step*backoff_epochs
@@ -82,7 +63,7 @@ rewarding = {'serve': Rs, 'wait': Rw, 'fail': Rf}
 
 # load from processed data
 session_df =pd.read_csv(
-    filepath_or_buffer='../data/trace_{}.dat'.format(location),
+    filepath_or_buffer='../data/trace_dh3.dat',
     parse_dates=['startTime_datetime', 'endTime_datetime']
 )
 
@@ -94,10 +75,8 @@ te = TrafficEmulator(
 
 ts = TrafficServer(cost=(Co, Cw), verbose=2)
 
-env_model = SJTUModel(traffic_params, queue_params, reward_params, 2)
-
-agent = Dyna_QAgentNN(
-    env_model=env_model, num_sim=num_sim,
+agent = Phi_QAgentNN(
+    phi_length=phi_length,
     dim_state=dim_state, range_state=range_state,
     f_build_net = None,
     batch_size=batch_size, learning_rate=learning_rate, momentum=momentum,
@@ -147,5 +126,4 @@ else:
     print log_file_name,
     print '{:.3f} sec,'.format(time.time()-t),
     print '{:.3f} min'.format((time.time()-t)/60)
-
 

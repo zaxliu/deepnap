@@ -65,7 +65,7 @@ num_sim = 5
 # |- Env
 #    |- Time
 start_time = pd.to_datetime("2014-10-15 09:40:00")
-total_time = pd.Timedelta(minutes=1)
+total_time = pd.Timedelta(days=7)
 time_step = pd.Timedelta(seconds=2)
 backoff_epochs = num_buffer*memory_size+phi_length
 head_datetime =  start_time - time_step*backoff_epochs
