@@ -9,7 +9,7 @@ import pandas as pd
 pd.set_option('mode.chained_assignment', None)  # block warnings due to DataFrame value assignment
 import lasagne
 # Project modules
-sys.path.append('../../')
+sys.path.append('../')
 from sleep_control.traffic_emulator import TrafficEmulator
 from sleep_control.traffic_server import TrafficServer
 from sleep_control.controller import QController, DummyController, NController
@@ -52,14 +52,14 @@ gamma, alpha = 0.9, 0.9  # TD backup
 explore_strategy, epsilon = 'epsilon', 0.02  # exploration
 #    |- QAgentNN
 #        | - Phi
-# phi_length = 5
-# dim_state = (1, phi_length, 3+2)
-# range_state_slice = [(0, 10), (0, 10), (0, 10), (0, 1), (0, 1)]
-# range_state = [[range_state_slice]*phi_length]
+phi_length = 5
+dim_state = (1, phi_length, 3+2)
+range_state_slice = [(0, 10), (0, 10), (0, 10), (0, 1), (0, 1)]
+range_state = [[range_state_slice]*phi_length]
 #        | - No Phi
-phi_length = 0
-dim_state = (1, 1, 3)
-range_state = ((((0, 10), (0, 10), (0, 10)),),)
+# phi_length = 0
+# dim_state = (1, 1, 3)
+# range_state = ((((0, 10), (0, 10), (0, 10)),),)
 #        | - Other params
 momentum, learning_rate = 0.9, 0.01  # SGD
 num_buffer, memory_size, batch_size, update_period, freeze_period  = 2, 200, 100, 4, 16
@@ -102,10 +102,10 @@ ts = TrafficServer(cost=(Co, Cw), verbose=2)
 
 env_model = SJTUModel(traffic_params, queue_params, reward_params, 2)
 
-agent = Dyna_QAgentNN(
-    env_model=env_model, num_sim=num_sim,
-# agent = Phi_QAgentNN(
-#     phi_length=phi_length,
+# agent = Dyna_QAgentNN(
+#     env_model=env_model, num_sim=num_sim,
+agent = Phi_QAgentNN(
+    phi_length=phi_length,
     dim_state=dim_state, range_state=range_state,
     f_build_net = None,
     batch_size=batch_size, learning_rate=learning_rate, momentum=momentum,

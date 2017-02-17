@@ -29,7 +29,7 @@ class DynaQAgentNN(DynaMixin, QAgentNN):
 
 # load from processed data
 session_df =pd.read_csv(
-    filepath_or_buffer='../data/trace_dh3.dat',
+    filepath_or_buffer='../../data/trace_dh3.dat',
     parse_dates=['startTime_datetime', 'endTime_datetime']
 )
 

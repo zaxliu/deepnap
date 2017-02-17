@@ -93,7 +93,7 @@ if len(argv)>3:
     files =[
         file_prefix + "_{}.log".format(i) for i in range(num)
     ]
-    print "Processing {}_*.log for {} sims, total {}, {} processes".format(
+    print "    Processing {}_*.log for {} sims, total {}, {} processes".format(
         file_prefix, num_sim, num, n_process)
     
     re_epoch_msg = re.compile(epoch_msg(num_sim))
@@ -101,14 +101,14 @@ if len(argv)>3:
     index_dir = file_prefix+'_x{}/'.format(num)
     if not os.path.exists('./log/index/'+index_dir):
         os.mkdir('./log/index/'+index_dir)
-        print 'Created index dir {}'.format(index_dir)
+        print '    Created index dir {}'.format(index_dir)
     else:
-        print 'Index dir already exist'
+        print '    Index dir already exist'
 
     
     def index_file(file):
         if os.path.isfile("./log/index/"+index_dir+"index_"+file+".csv"):
-            print 'file {} already exist!'.format("./log/index/"+index_dir+"index_"+file+".csv")
+            print '    file {} already exist!'.format("./log/index/"+index_dir+"index_"+file+".csv")
         else:
             with open('./log/'+file, "r") as f_log:
                 all_log = "".join(f_log.readlines()).split('\n\n')
@@ -118,6 +118,7 @@ if len(argv)>3:
                 df.index.name = 'epoch'
             with open("./log/index/"+index_dir+"index_"+file+".csv", "w") as f_ind:
                 df.to_csv(f_ind, sep=';', index=True, header=True)
+            print "        ",
             print (file, df.shape)
         return
     

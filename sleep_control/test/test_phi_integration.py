@@ -18,7 +18,7 @@ class QAgentNNPhi(PhiMixin, QAgentNN):
 def set_up_data(f_name):
     print "Reading data...",
     session_df =pd.read_csv(
-        filepath_or_buffer='../data/trace_dh3.dat',
+        filepath_or_buffer='../../data/trace_dh3.dat',
         parse_dates=['startTime_datetime', 'endTime_datetime']
     )
     print "Complete!"

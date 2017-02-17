@@ -16,7 +16,7 @@ pd.set_option('mode.chained_assignment', None)
 # Setting up data
 print "Reading data..."
 session_df =pd.read_csv(
-    filepath_or_buffer='../data/trace_dh3.dat',
+    filepath_or_buffer='../../data/trace_dh3.dat',
     parse_dates=['startTime_datetime', 'endTime_datetime']
 )
 
