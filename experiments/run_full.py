@@ -68,6 +68,50 @@ exp_configs = [
     ('experiment_DynaQNN_Feb10_2303.py', 20, 14),  # n_sim=20
 ]
 
+exp_configs_legacy = [
+    # (logprefix, g, phi, buf, rs, weight, start_time, backoff)
+    # Fig 2
+    ('message_2016-6-8_XXX',             0.99, 5, (1, 400), (1, 'adaptive'), None, '2014-09-25 09:20:00',  0),
+    # Fig 3
+    ('message_2016-6-11_1230_FR1000_G5',  0.5, 5, (2, 200), (1000, 'fixed'), None, '2014-09-25 09:20:00', None),
+    ('message_2016-6-11_1230_FR20_G5',    0.5, 5, (2, 200), (20,   'fixed'), None, '2014-09-25 09:20:00', None),
+    ('message_2016-6-11_1230_FR1_G5',     0.5, 5, (2, 200), (1,    'fixed'), None, '2014-09-25 09:20:00', None),
+    # Fig 4
+    # Fig 5
+    ('message_2016-6-8_2130_AR1',         0.5, 5, (2, 200), (1, 'adaptive'), None, '2014-11-01 00:00:00', None),
+    # Fig 6
+    # Fig 7
+    # Fig 8
+    # Fig 9
+    ('message_2016-6-13_G5_BUF1_FR20_1_1', 0.5, 5, (1, 400), (20,   'fixed'), 0.7, '2014-09-25 09:20:00', None),
+    ('message_2016-6-13_G5_BUF1_FR20_1_2', 0.5, 5, (1, 400), (20,   'fixed'), 0.7, '2014-09-25 09:20:00', None),
+    ('message_2016-6-13_G5_BUF2_FR20_1',   0.5, 5, (1, 400), (20,   'fixed'), 0.7, '2014-09-25 09:20:00', None),
+    # Fig 10
+    ('message_2016-6-12_G5_BUF2_AR1',     0.5, 5, (2, 200), (1, 'adaptive'), 0.5, '2014-10-15 09:20:00', None),
+    # Fig 11
+    ('message_2016-6-12_G5_BUF2_AR1_b1',  0.5, 5, (2, 200), (1, 'adaptive'), 0.1,  '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b15', 0.5, 5, (2, 200), (1, 'adaptive'), 0.15, '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b2',  0.5, 5, (2, 200), (1, 'adaptive'), 0.2,  '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b25', 0.5, 5, (2, 200), (1, 'adaptive'), 0.25, '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b3',  0.5, 5, (2, 200), (1, 'adaptive'), 0.3,  '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b35', 0.5, 5, (2, 200), (1, 'adaptive'), 0.35, '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b4',  0.5, 5, (2, 200), (1, 'adaptive'), 0.4,  '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b5',  0.5, 5, (2, 200), (1, 'adaptive'), 0.5,  '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b55', 0.5, 5, (2, 200), (1, 'adaptive'), 0.5, '2014-10-15 09:40:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b6',  0.5, 5, (2, 200), (1, 'adaptive'), 0.6,  '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b65', 0.5, 5, (2, 200), (1, 'adaptive'), 0.65, '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b7',  0.5, 5, (2, 200), (1, 'adaptive'), 0.7,  '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G5_BUF2_AR1_b8',  0.5, 5, (2, 200), (1, 'adaptive'), 0.8,  '2014-11-05 09:20:00', None),
+    # Fig 12
+    ('message_2016-6-12_G9_BUF2_AR1',   0.9, 5, (2, 200), (1, 'adaptive'), 0.5, '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G9_BUF2_FR100', 0.9, 5, (2, 200), (1, 'adaptive'), 0.5, '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G9_BUF2_FR20',  0.9, 5, (2, 200), (1, 'adaptive'), 0.5, '2014-11-05 09:20:00', None),
+    ('message_2016-6-12_G9_BUF2_FR1',   0.9, 5, (2, 200), (1, 'adaptive'), 0.5, '2014-11-05 09:20:00', None),
+    ('message_2016-6-11_BUF2_G5',       0.5, 5, (2, 200), (1, 'adaptive'), 0.5, '2014-11-05 09:20:00', None),
+    ('message_2016-6-11_BUF2_G5_FR100', 0.5, 5, (2, 200), (1, 'adaptive'), 0.5, '2014-11-05 09:20:00', None),
+    ('message_2016-6-11_BUF2_G5_FR1',   0.5, 5, (2, 200), (1, 'adaptive'), 0.5, '2014-11-05 09:20:00', None), 
+]
+
 
 #############################################################
 # Configurations Above
@@ -93,6 +137,12 @@ def build_cmd(exp_file, num_sim, num_log):
             log_file=log_file, num_log=num_log, num_proc=n_process_idx
         )        
     return (exp_list, cmd_index, (log_file, num_log, num_log))
+
+def build_legacy_cmd(prefix):
+    log_file = prefix + '.log'
+    exp_cmd = 'python ./kdd-exps/experiment_{}_legacy.py'.format(prefix)
+    idx_cmd = 'python log_indexing_phiNN_legacy.py ./log/{}.log'.format(prefix)
+    return (exp_cmd, idx_cmd)
 
 def check_pid(pid):        
     """ Check For the existence of a unix pid. """
@@ -159,21 +209,27 @@ while(True):
 
 runs = map(lambda x: build_cmd(*x), exp_configs)
 
-pool = Pool(n_process_exp)
-for exp_list, cmd_index, (log_file, num_log, num_log) in runs:
-    print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
-    print "Experiments start:"
-    pool.map(run, exp_list)
-    print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
-    print "Indexing log files:",
-    print cmd_index
-    run(cmd_index)
-    print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
-    print "Calculating rewards:"
-    step_reward = get_step_reward(log_file, num_log, num_log)
-    print "    {} sims".format(len(step_reward))
-    print "    mean {:.5f}, std {:.5f},".format(step_reward.mean(), step_reward.std())
-    print "    10% {:.5f}, 50% {:.5f}, 90% {:.5f},".format(*np.percentile(step_reward, [10, 50, 90]))
-    log_step_reward(log_file, num_log, step_reward)
-pool.close()
+# pool = Pool(n_process_exp)
+# for exp_list, cmd_index, (log_file, num_log, num_log) in runs:
+#     print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
+#     print "Experiments start:"
+#     pool.map(run, exp_list)
+#     print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
+#     print "Indexing log files:",
+#     print cmd_index
+#     run(cmd_index)
+#     print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
+#     print "Calculating rewards:"
+#     step_reward = get_step_reward(log_file, num_log, num_log)
+#     print "    {} sims".format(len(step_reward))
+#     print "    mean {:.5f}, std {:.5f},".format(step_reward.mean(), step_reward.std())
+#     print "    10% {:.5f}, 50% {:.5f}, 90% {:.5f},".format(*np.percentile(step_reward, [10, 50, 90]))
+#     log_step_reward(log_file, num_log, step_reward)
+# pool.close()
+
+runs_legacy = map(lambda x: build_legacy_cmd(x[0]), exp_configs_legacy)
+for (exp_cmd, idx_cmd) in runs_legacy:
+    run(exp_cmd)
+    run(idx_cmd)
+    
 

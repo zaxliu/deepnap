@@ -87,7 +87,7 @@ for fname, n_sim, n_bin, phi, loc in exp_configs:
             lines[i] = "log_prefix = '_'.join(['msg'] + os.path.basename(__file__).replace('.', '_').split('_')[1:5])\n" if "_130_" in fname \
                     else "log_prefix = '_'.join(['msg'] + os.path.basename(__file__).replace('.', '_').split('_')[1:4])\n"
         if 'total_time = pd.Timedelta(' in line:
-            lines[i] = 'total_time = pd.Timedelta(minutes=1)\n'
+            lines[i] = 'total_time = pd.Timedelta(days=7)\n'
         elif 'num_sim = ' in line and n_sim is not None and 'Dyna' in fname:
             lines[i] = 'num_sim = {}\n'.format(n_sim)
         elif 'n_belief_bins, max_queue_len = ' in line and n_bin is not None and 'Dyna' in fname:

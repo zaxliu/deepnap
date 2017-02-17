@@ -21,7 +21,7 @@ from rl.mixin import PhiMixin, DynaMixin
 
 
 sys_stdout = sys.stdout
-log_file_name = "Default"
+log_file_name = 'message_2016-6-11_1230_FR20_G5.log'
 
 # Composite classes
 class Phi_QAgentNN(PhiMixin, QAgentNN):
@@ -32,7 +32,7 @@ class Phi_QAgentNN(PhiMixin, QAgentNN):
 # |- Agent
 #    |- QAgent
 actions = [(True, None), (False, 'serve_all')]
-gamma, alpha = 0.9, 0.9  # TD backup
+gamma, alpha = 0.5, 0.9
 explore_strategy, epsilon = 'epsilon', 0.02  # exploration
 #    |- QAgentNN
 #        | - Phi
@@ -43,7 +43,7 @@ range_state = [[range_state_slice]*phi_length]
 #        | - Other params
 momentum, learning_rate = 0.9, 0.01  # SGD
 num_buffer, memory_size = 2, 200
-reward_scaling, reward_scaling_update = 1, 'adaptive'
+reward_scaling, reward_scaling_update = 20, 'fixed'
 batch_size, update_period, freeze_period, rs_period  = 100, 4, 16, 32
 #    |- Env model
 Rs, Rw, Rf, Co, Cw = 1.0, -1.0, -10.0, -5.0, 0.0
@@ -52,7 +52,7 @@ reward_params = (Rs, Rw, Rf, Co, Cw, beta)
 
 # |- Env
 #    |- Time
-start_time = pd.to_datetime("2014-10-15 09:20:00")
+start_time = pd.to_datetime('2014-09-25 09:20:00')
 total_time = pd.Timedelta(days=7)
 time_step = pd.Timedelta(seconds=2)
 backoff_epochs = num_buffer*memory_size+phi_length
@@ -127,4 +127,5 @@ else:
     print log_file_name,
     print '{:.3f} sec,'.format(time.time()-t),
     print '{:.3f} min'.format((time.time()-t)/60)
+
 
