@@ -8,3 +8,4 @@ scikit_learn==0.18.1
 hmmlearn==0.2.0
 Theano==0.8.2
 Lasagne==0.1
+matplotlib=1.5.1
