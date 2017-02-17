@@ -209,23 +209,23 @@ while(True):
 
 runs = map(lambda x: build_cmd(*x), exp_configs)
 
-# pool = Pool(n_process_exp)
-# for exp_list, cmd_index, (log_file, num_log, num_log) in runs:
-#     print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
-#     print "Experiments start:"
-#     pool.map(run, exp_list)
-#     print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
-#     print "Indexing log files:",
-#     print cmd_index
-#     run(cmd_index)
-#     print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
-#     print "Calculating rewards:"
-#     step_reward = get_step_reward(log_file, num_log, num_log)
-#     print "    {} sims".format(len(step_reward))
-#     print "    mean {:.5f}, std {:.5f},".format(step_reward.mean(), step_reward.std())
-#     print "    10% {:.5f}, 50% {:.5f}, 90% {:.5f},".format(*np.percentile(step_reward, [10, 50, 90]))
-#     log_step_reward(log_file, num_log, step_reward)
-# pool.close()
+pool = Pool(n_process_exp)
+for exp_list, cmd_index, (log_file, num_log, num_log) in runs:
+    print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
+    print "Experiments start:"
+    pool.map(run, exp_list)
+    print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
+    print "Indexing log files:",
+    print cmd_index
+    run(cmd_index)
+    print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
+    print "Calculating rewards:"
+    step_reward = get_step_reward(log_file, num_log, num_log)
+    print "    {} sims".format(len(step_reward))
+    print "    mean {:.5f}, std {:.5f},".format(step_reward.mean(), step_reward.std())
+    print "    10% {:.5f}, 50% {:.5f}, 90% {:.5f},".format(*np.percentile(step_reward, [10, 50, 90]))
+    log_step_reward(log_file, num_log, step_reward)
+pool.close()
 
 runs_legacy = map(lambda x: build_legacy_cmd(x[0]), exp_configs_legacy)
 for (exp_cmd, idx_cmd) in runs_legacy:
