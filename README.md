@@ -48,4 +48,4 @@ We provide code and data to reproduce the experimental results (figures and tabl
 
 Note you **don't have to re-run** all the experiments to see results. We provide proccessed experimental results (```.reward``` files). They can be conveniently loaded by the Ipython Notebooks for visualization purpose.
 
-If you do want to repeat all experiments, >500G disk space is recommended to store all raw log files and indexed data. Also for speed considerations, we recommend using multi-core CPU and GPU to fully leverage parallel execution. And be warned experiments are time-consuming - each experiment may take hours to finish. So be patient and have a drink, maybe.
+If you **do want to repeat all experiments**, **>500G** disk space is recommended to store all raw log files and indexed data. Also for speed considerations, we recommend using multi-core CPU, GPU, and >8G memory to fully leverage parallel execution. And be warned experiments are time-consuming - each experiment may take hours to finish. So be patient and have a drink, maybe.
