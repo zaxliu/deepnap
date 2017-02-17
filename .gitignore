@@ -17,7 +17,6 @@ venv/
 # log file
 *.log
 *.csv
-*.txt
 *.stat
 
 # MISC

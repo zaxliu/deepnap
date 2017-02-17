@@ -1,0 +1,10 @@
+Cython==0.25.2
+regex==2017.1.17
+jsonschema==2.5.1
+numpy==1.11.1
+scipy==0.17.0
+pandas==0.19.2
+scikit_learn==0.18.1
+hmmlearn==0.2.0
+Theano==0.8.2
+Lasagne==0.1

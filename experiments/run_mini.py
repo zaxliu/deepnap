@@ -11,11 +11,13 @@ import subprocess
 # Configuration Area
 #############################################################
 previous_pid = None  # Unix PID of previous run scripts
-n_process_exp = 1
+n_process_exp = 2
 n_process_idx = 1
 exp_configs = [
     # (file, num_sim, num_log)
-    ('experiment_DynaQNN_Feb15_2200_mini.py', 1, 2)
+    ('experiment_DynaQNN_Feb15_2200_mini.py', 1, 2),
+    ('experiment_DynaQtable_Feb15_2300_mini.py', 1, 1),
+    ('experiment_phiNN_Feb15_2400_mini.py', None, 2),
 ]
 
 #############################################################
@@ -66,8 +68,10 @@ def load_dataframes(prefix, n_run, n=None):
         df.set_index('start_ts', inplace=True)
         df['total_reward'] = df['tr_reward'] + df['op_cost']
         df_list[i] = df
-        print df.shape,
+        print "    Loaded",
         print files[i],
+        print 'shape:',
+        print df.shape,
         print "{:.2f} sec".format(time.time()-t)
     return df_list   
 
@@ -80,8 +84,8 @@ def get_step_reward(file_prefix, num_total, num_load):
 
     step_reward = np.zeros(len(df_list))
     for i, df in enumerate(df_list):
-        df = df.loc[start:end]
-        print (i, df.shape[0])
+        # df = df.loc[start:end]
+        # print (i, df.shape[0])
         step = (df.index-df.index[0])/delta+1
         ts = df['total_reward'].cumsum()/step
         step_reward[i] = ts.iloc[-1]
@@ -112,10 +116,11 @@ for exp_list, cmd_index, (log_file, num_log, num_log) in runs:
     print cmd_index
     run(cmd_index)
     print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
-    print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),
-    print "Calculation rewards:"
+    print "Calculating rewards:"
     step_reward = get_step_reward(log_file, num_log, num_log)
-    print step_reward
+    print "    {} sims".format(len(step_reward))
+    print "    mean {:.5f}, std {:.5f},".format(step_reward.mean(), step_reward.std())
+    print "    10% {:.5f}, 50% {:.5f}, 90% {:.5f},".format(*np.percentile(step_reward, [10, 50, 90]))
     log_step_reward(log_file, num_log, step_reward)
 pool.close()
 
