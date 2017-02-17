@@ -4,22 +4,7 @@ DeepNap is a deep reinforcement learning based sleeping control agent for base s
 This repository is maintained review purpose of our paper: **DeepNap: Data-Driven Base Station Sleeping Operations through Deep Reinforcement Learning**
 
 ## Requirements and Dependencies
-All code are tested for `Ubuntu 14.04.4 LTS` with `CUDA 7.5.17`.
-
-The required Python packages are:
-* Cython==0.25.2
-* regex==2017.1.17
-* jsonschema==2.5.1
-* numpy==1.11.1
-* scipy==0.17.0
-* pandas==0.19.2
-* scikit_learn==0.18.1
-* hmmlearn==0.2.0
-* Theano==0.8.2
-* Lasagne==0.1
-* matplotlib=1.5.1
-
-And ```Jupyter Notebook``` is also required for visualizing results.
+All code are tested for `Ubuntu 14.04.4 LTS` with `CUDA 7.5.17`. The required Python packages are listed in ``requirements.txt``. ```iPython Notebook``` is also required for visualization.
 
 ## Setup
 Clone the code and data from Github:
@@ -31,10 +16,10 @@ Installing Python dependencies:
 cd project_home/
 pip install -r requirements
 ```
-Un-compress data
+Download and unzip data:
 ```shell
-cd project_home/data/
-tar xvf traces_kdd.tar.gz
+cd project_home/
+python setup.py
 ```
 Try running the mimi-experiment to test if installation is sucessful:
 ```shell
